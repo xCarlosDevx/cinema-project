@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/ContactosSQLiteMVC/src/modelo/LoginDAO.java</file>
+            <file>file:/C:/ContactosSQLiteMVC/src/vista/LoginV.java</file>
+            <file>file:/C:/ContactosSQLiteMVC/src/controlador/Controlador.java</file>
+            <file>file:/C:/ContactosSQLiteMVC/src/modelo/conexionSQLite.java</file>
+            <file>file:/C:/ContactosSQLiteMVC/src/modelo/ContactosDAO.java</file>
+            <file>file:/C:/ContactosSQLiteMVC/src/modelo/Login.java</file>
+            <file>file:/C:/ContactosSQLiteMVC/src/Agenda.java</file>
+            <file>file:/C:/ContactosSQLiteMVC/src/vista/Vista.java</file>
+            <file>file:/C:/ContactosSQLiteMVC/src/modelo/Contactos.java</file>
+            <file>file:/C:/ContactosSQLiteMVC/src/controlador/ControladorLogin.java</file>
+        </group>
+    </open-files>
+</project-private>

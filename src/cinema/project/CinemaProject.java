@@ -7,6 +7,7 @@ package cinema.project;
 import controlador.Controlador;
 import modelo.Modelo;
 import vista.Login;
+import modelo.QuerysBd;
 
 /**
  *
@@ -21,7 +22,8 @@ public class CinemaProject {
 
         Modelo mod = new Modelo();
         Login view = new Login();
-        Controlador ctrl = new Controlador(view, mod);
+        QuerysBd qr = new QuerysBd();
+        Controlador ctrl = new Controlador(view, mod, qr);
         ctrl.iniciar();
         view.setVisible(true);
     }

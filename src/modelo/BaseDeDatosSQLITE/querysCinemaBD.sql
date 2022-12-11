@@ -42,13 +42,15 @@ CREATE TABLE IF NOT EXISTS snackCombo(
 id integer NOT NULL PRIMARY KEY ,
 nombre text,
 precio real,
-tipo text
+tipo text,
+imagen blob
 );
 CREATE TABLE snackAdicional(
 id integer NOT NULL PRIMARY KEY ,
 nombre text,
 precio real,
-tipo text
+tipo text,
+imagen blob
 );
 CREATE TABLE IF NOT EXISTS horarios(
 id integer NOT NULL PRIMARY KEY,

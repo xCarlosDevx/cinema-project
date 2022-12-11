@@ -6,8 +6,14 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import modelo.Modelo;
 import modelo.QuerysBd;
+import modelo.EmpleadoModel;
+import modelo.EmpleadoDAO;
 import vista.Login;
 
 /**
@@ -19,10 +25,11 @@ public class Controlador implements ActionListener {
     Login view = new Login();
     Modelo model = new Modelo();
     QuerysBd qr = new QuerysBd();
-
-    public Controlador(Login view, Modelo model, QuerysBd qr) {
+    EmpleadoDAO empDao = new EmpleadoDAO();
+    EmpleadoModel emp = new EmpleadoModel();
+    
+    public Controlador(Login view, QuerysBd qr) {
         this.view = view;
-        this.model = model;
         this.qr = qr;
         qr.doConexion();
 //        this.view.btnMultiplicar.addActionListener(this);

@@ -22,7 +22,7 @@ public class ConexionSqlite {
     public Connection doConexion() {
         try {
             Class.forName("org.sqlite.JDBC");
-            con = DriverManager.getConnection("jdbc:sqlite:src\\modelo\\BaseDeDatosSQLITE\\cinema-db.db");
+            con = DriverManager.getConnection("jdbc:sqlite:src\\modelo\\BaseDeDatosSQLITE\\cinema-bd.db");
             System.out.println("Se realizo la conexion");
         } catch (ClassNotFoundException ex) {
             System.out.println("Hubo un error en la conexion " + ex);

@@ -15,6 +15,7 @@ public class Boleteria extends javax.swing.JFrame {
      */
     public Boleteria() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

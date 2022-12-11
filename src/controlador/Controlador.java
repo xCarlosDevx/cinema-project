@@ -7,6 +7,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import modelo.Modelo;
+import modelo.QuerysBd;
 import vista.Login;
 
 /**
@@ -15,13 +16,16 @@ import vista.Login;
  */
 public class Controlador implements ActionListener {
 
-    private Login view;
-    private Modelo model;
+    Login view = new Login();
+    Modelo model = new Modelo();
+    QuerysBd qr = new QuerysBd();
 
-    public Controlador(Login view, Modelo model) {
+    public Controlador(Login view, Modelo model, QuerysBd qr) {
         this.view = view;
         this.model = model;
-        this.view.btnMultiplicar.addActionListener(this);
+        this.qr = qr;
+        qr.doConexion();
+//        this.view.btnMultiplicar.addActionListener(this);
     }
 
     public void iniciar() {
@@ -30,10 +34,10 @@ public class Controlador implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        model.setNumeroUno(Integer.parseInt(view.txtNumeroUno.getText()));
-        model.setNumeroDos(Integer.parseInt(view.txtNumeroDos.getText()));
-        model.multiplicar();
-        view.txtResultado.setText(String.valueOf(model.getResultado()));
+//        model.setNumeroUno(Integer.parseInt(view.txtNumeroUno.getText()));
+//        model.setNumeroDos(Integer.parseInt(view.txtNumeroDos.getText()));
+//        model.multiplicar();
+//        view.txtResultado.setText(String.valueOf(model.getResultado()));
 
     }
 

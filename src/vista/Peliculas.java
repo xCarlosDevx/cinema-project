@@ -15,6 +15,7 @@ public class Peliculas extends javax.swing.JFrame {
      */
     public Peliculas() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -101,7 +102,7 @@ public class Peliculas extends javax.swing.JFrame {
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField3.setText("Sala");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AvatarFull.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Img/AvatarFull.png"))); // NOI18N
 
         jComboBox8.setBackground(new java.awt.Color(0, 0, 0));
         jComboBox8.setFont(new java.awt.Font("Segoe UI", 2, 18)); // NOI18N

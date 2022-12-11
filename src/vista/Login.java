@@ -15,6 +15,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -31,6 +32,11 @@ public class Login extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
+        btnMenu = new javax.swing.JButton();
+        btnBoleteria = new javax.swing.JButton();
+        btnCafeteria = new javax.swing.JButton();
+        btnComida = new javax.swing.JButton();
+        btnPeliculas = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -54,35 +60,120 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
         jPanel1.setPreferredSize(new java.awt.Dimension(675, 555));
 
+        btnMenu.setText("btnMenu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
+
+        btnBoleteria.setText("btnBoleteria");
+        btnBoleteria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBoleteriaActionPerformed(evt);
+            }
+        });
+
+        btnCafeteria.setText("btnCafeteria");
+        btnCafeteria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCafeteriaActionPerformed(evt);
+            }
+        });
+
+        btnComida.setText("btnComida");
+        btnComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnComidaActionPerformed(evt);
+            }
+        });
+
+        btnPeliculas.setText("btnPeliculas");
+        btnPeliculas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPeliculasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 781, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(668, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnPeliculas)
+                    .addComponent(btnComida)
+                    .addComponent(btnCafeteria)
+                    .addComponent(btnBoleteria)
+                    .addComponent(btnMenu))
+                .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 461, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(btnMenu)
+                .addGap(18, 18, 18)
+                .addComponent(btnBoleteria)
+                .addGap(18, 18, 18)
+                .addComponent(btnCafeteria)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnComida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnPeliculas)
+                .addContainerGap(268, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        // TODO add your handling code here:
+        Menu menu = new Menu();
+        menu.setVisible(true);
+    }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void btnBoleteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBoleteriaActionPerformed
+        // TODO add your handling code here:
+        Boleteria boleteria = new Boleteria();
+        boleteria.setVisible(true);
+    }//GEN-LAST:event_btnBoleteriaActionPerformed
+
+    private void btnCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCafeteriaActionPerformed
+        // TODO add your handling code here:
+        Cafeteria cafeteria = new Cafeteria();
+        cafeteria.setVisible(true);
+    }//GEN-LAST:event_btnCafeteriaActionPerformed
+
+    private void btnComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComidaActionPerformed
+        Comida comida = new Comida();
+        comida.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnComidaActionPerformed
+
+    private void btnPeliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPeliculasActionPerformed
+        // TODO add your handling code here:
+        Peliculas peli = new Peliculas();
+        peli.setVisible(true);
+    }//GEN-LAST:event_btnPeliculasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -120,6 +211,11 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBoleteria;
+    private javax.swing.JButton btnCafeteria;
+    private javax.swing.JButton btnComida;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnPeliculas;
     private java.awt.Checkbox checkbox1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;

@@ -15,6 +15,7 @@ public class Cafeteria extends javax.swing.JFrame {
      */
     public Cafeteria() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,7 +34,6 @@ public class Cafeteria extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(669, 247));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 327));

@@ -15,6 +15,7 @@ public class Comida extends javax.swing.JFrame {
      */
     public Comida() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -52,10 +53,10 @@ public class Comida extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Combo de palomita1full.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Img/Combodepalomitafull.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/combo de palomitasfull.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Img/combo2depalomitasfull.png"))); // NOI18N
         jLabel3.setText("jLabel1");
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
@@ -91,7 +92,7 @@ public class Comida extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/combo3.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Img/combo3.png"))); // NOI18N
         jLabel4.setText("jLabel1");
 
         jTextField5.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N

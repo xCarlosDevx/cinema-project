@@ -40,6 +40,33 @@ public class EmpleadoDAO {
                 e.setRol(rs.getString(7));
                 datos.add(e);
 
+            } 
+        } catch (SQLException ex) {
+            System.out.println("Error al traer los datos " + ex);
+        }
+        return datos;
+    }
+        public List traerDatosId(int id) {
+        String sql = "select * from empleados where id="+id;
+
+        List<EmpleadoModel> datos = new ArrayList<>();
+        try {
+
+            cn = conect.doConexion();
+            ps = cn.prepareStatement(sql);
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                EmpleadoModel e = new EmpleadoModel();
+                e.setId(rs.getInt(1));
+                e.setNombre(rs.getString(2));
+                e.setApellido(rs.getString(3));
+                e.setNombreUsuario(rs.getString(4));
+                e.setContraseña(rs.getString(5));
+                e.setCargo(rs.getString(6));
+                e.setRol(rs.getString(7));
+                datos.add(e);
+
             }
         } catch (SQLException ex) {
             System.out.println("Error al traer los datos " + ex);
@@ -47,14 +74,13 @@ public class EmpleadoDAO {
         return datos;
     }
 
-    public boolean insertarDatos(EmpleadoModel e) {
+    public int insertarDatos(EmpleadoModel e) {
         String sql = "INSERT INTO empleados (nombre,apellido,nombreUsuario,contraseña,cargo,rol) VALUES (?,?,?,?,?,?)";
 
         try {
 
             cn = conect.doConexion();
             ps = cn.prepareStatement(sql);
-            rs = ps.executeQuery();
             ps.setString(1, e.getNombre());
             ps.setString(2, e.getApellido());
             ps.setString(3, e.getNombreUsuario());
@@ -66,12 +92,12 @@ public class EmpleadoDAO {
         } catch (SQLException ex) {
             System.out.println("Error al insertar los datos " + ex);
         }
-        return true;
+        return 1;
     }
 
-    public boolean editarDatos(EmpleadoModel e) {
+    public int editarDatos(EmpleadoModel e,int id) {
 
-        String sql = "UPDATE empleados set nombre=?,apellido=?,nombreUsuario=?,contraseña=?,cargo=?,rol=? where id=?";
+        String sql = "UPDATE empleados set nombre=?,apellido=?,nombreUsuario=?,contraseña=?,cargo=?,rol=? where id="+id;
 
         try {
             cn = conect.doConexion();
@@ -87,7 +113,7 @@ public class EmpleadoDAO {
         } catch (SQLException ex) {
             System.out.println("Error al intentar editar los datos" + ex);
         }
-        return true;
+        return 1;
     }
 
     public boolean eliminar(int id) {

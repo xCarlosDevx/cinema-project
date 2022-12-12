@@ -2,10 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-import controlador.Controlador;
-import modelo.Modelo;
-import vista.Login;
-import modelo.QuerysBd;
+import controlador.Controlador; 
+import vista.Login; 
 
 /**
  *
@@ -18,9 +16,8 @@ public class CinemaProject {
      */
     public static void main(String[] args) {
 
-        Login view = new Login();
-        QuerysBd qr = new QuerysBd();
-        Controlador ctrl = new Controlador(view, qr);
+        Login view = new Login(); 
+        Controlador ctrl = new Controlador(view);
         ctrl.iniciar();
         view.setVisible(true);
     }

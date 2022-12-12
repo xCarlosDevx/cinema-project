@@ -12,6 +12,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.EmpleadoModel;
 import modelo.EmpleadoDAO;
+import vista.EmpleadoGUI;
 
 /**
  *
@@ -21,34 +22,24 @@ public class ControladorEmpleado implements ActionListener {
 
     EmpleadoModel emp = new EmpleadoModel();
     EmpleadoDAO empDAO = new EmpleadoDAO();
-    Empleado empView = new Empleado();
+    EmpleadoGUI empView = new EmpleadoGUI();
     DefaultTableModel model = new DefaultTableModel();
 
-    public Controlador(empView e) {
-        this.empView = e;
+    public ControladorEmpleado(EmpleadoGUI empView) {
+        this.empView = empView;
         this.empView.btnGuardar.addActionListener(this);
         this.empView.btnEditar.addActionListener(this);
         this.empView.btnEliminar.addActionListener(this);
-        this.empView.btnCancelar.addActionListener(this);
-        this.empView.btnBuscar.addActionListener(this);
-        this.empView.txtBuscar.addActionListener(this);
 
-        this.empView.btnGuardar.setEnabled(true);
-        this.empView.btnEditar.setEnabled(false);
-        this.empView.btnCancelar.setEnabled(true);
-        this.empView.btnEliminar.setEnabled(false);
-        this.empView.btnBuscar.setEnabled(true);
-
-        //Limpiar formulario y Listar contactos
-        limpiarCampos(e);
+        vaciarCampos(empView);
         traer(empView.tblEmpleado);
     }
 
-
     public final void traer(JTable tabla) {
+        vaciarTabla();
         model = (DefaultTableModel) tabla.getModel();
         List<EmpleadoModel> lista = (List<EmpleadoModel>) empDAO.traerDatos();
-        Object[] object = new Object[5];
+        Object[] object = new Object[7];
         for (int i = 0; i < lista.size(); i++) {
             object[0] = lista.get(i).getId();
             object[1] = lista.get(i).getNombre();
@@ -63,12 +54,27 @@ public class ControladorEmpleado implements ActionListener {
         empView.tblEmpleado.setModel(model);
     }
 
+    public final void traerId() {
+        int id = Integer.parseInt(empView.txtId.getText());
+        vaciarTabla();
+        List<EmpleadoModel> lista = (List<EmpleadoModel>) empDAO.traerDatosId(id);
+        for (int i = 0; i < lista.size(); i++) {
+            empView.txtNombre.setText(lista.get(i).getNombre());
+            empView.txtApellido.setText(lista.get(i).getApellido());
+            empView.txtNombreUsuario.setText(lista.get(i).getNombreUsuario());
+            empView.txtContra.setText(lista.get(i).getContraseña());
+            empView.txtCargo.setText(lista.get(i).getCargo());
+            empView.txtRol.setText(lista.get(i).getRol());
+        }
+        traer(empView.tblEmpleado);
+    }
+
     public void insertarEmpleado() {
-        boolean r;
+        int r;
         String nombre = empView.txtNombre.getText();
-        String apellido = empView.txtApellido.gettext();
+        String apellido = empView.txtApellido.getText();
         String nombreUsuario = empView.txtNombreUsuario.getText();
-        String contraseña = empView.txtContraseña.getText();
+        String contraseña = empView.txtContra.getText();
         String cargo = empView.txtCargo.getText();
         String rol = empView.txtRol.getText();
 
@@ -79,141 +85,140 @@ public class ControladorEmpleado implements ActionListener {
         emp.setCargo(cargo);
         emp.setRol(rol);
 
-        if (validarCampos(empView) > 0) {
+        if (revisarCampos(empView) > 0) {
             r = empDAO.insertarDatos(emp);
-            if (r == true) {
-                JOptionPane.showMessageDialog(empView, "Se ha agregado el empleado!", JOptionPane.INFORMATION_MESSAGE);
-
+            if (r == 1) {
+                JOptionPane.showMessageDialog(empView, "Se ha agregado el empleado!", "Continuar", JOptionPane.INFORMATION_MESSAGE);
+                vaciarTabla();
+                vaciarCampos(empView);
                 traer(empView.tblEmpleado);
             } else {
-                JOptionPane.showMessageDialog(empView, "Error no se pudo agregar el empleado", JOptionPane.ERROR_MESSAGE);
-
+                JOptionPane.showMessageDialog(empView, "Error no se pudo agregar el empleado", "Error", JOptionPane.ERROR_MESSAGE);
+                vaciarTabla();
+                vaciarCampos(empView);
                 traer(empView.tblEmpleado);
             }
         }
     }
 
     public void editarEmpleado() {
+        int r;
+        String nombre = empView.txtNombre.getText();
+        String apellido = empView.txtApellido.getText();
+        String nombreUsuario = empView.txtNombreUsuario.getText();
+        String contraseña = empView.txtContra.getText();
+        String cargo = empView.txtCargo.getText();
+        String rol = empView.txtRol.getText();
 
-        int id = Integer.parseInt(empView.txtID.getText());
-        String nombre = (String) empView.tblEmpleado.getValueAt(fila, 1);
-        String apellido = (String) empView.tblEmpleado.getValueAt(fila, 2);
-        String nombreUsuario = (String) empView.tblEmpleado.getValueAt(fila, 3);
-        String contraseña = (String) empView.tblEmpleado.getValueAt(fila, 4);
-        String cargo = (String) empView.tblEmpleado.getValueAt(fila, 5);
-        String rol = (String) empView.tblEmpleado.getValueAt(fila, 6);
+        emp.setNombre(nombre);
+        emp.setApellido(apellido);
+        emp.setNombreUsuario(nombreUsuario);
+        emp.setContraseña(contraseña);
+        emp.setCargo(cargo);
+        emp.setRol(rol);
 
-        empView.txtNombre.setText(nombre);
-        empView.txtApellido.setText(apellido);
-        empView.txtNombreUsuario.setText(nombreUsuario);
-        empView.txtContraseña.setText(contraseña);
-        empView.txtCargo.setText(cargo);
-        empView.txtRol.setText(rol);
-
-        empView.txtNombre.requestFocus();
+        if (revisarCampos(empView) > 0) {
+            if (JOptionPane.showConfirmDialog(empView, "Seguro que quiere eliminar este registro?", "Continuar", JOptionPane.YES_NO_OPTION) == 0) {
+                int id = Integer.parseInt(empView.txtId.getText());
+                r = empDAO.editarDatos(emp, id);
+                if (r == 1) {
+                    JOptionPane.showMessageDialog(empView, "Se ha editado el empleado con el id " + id, "Continuar", JOptionPane.INFORMATION_MESSAGE);
+                    vaciarTabla();
+                    vaciarCampos(empView);
+                    traer(empView.tblEmpleado);
+                } else {
+                    JOptionPane.showMessageDialog(empView, "Error no se pudo editar el empleado con el id " + id, "Error", JOptionPane.ERROR_MESSAGE);
+                    vaciarTabla();
+                    vaciarCampos(empView);
+                    traer(empView.tblEmpleado);
+                }
+            }
+        }
 
     }
 
-    public void eliminar() {
+    public void eliminarEmpleado() {
 
-        if (JOptionPane.showConfirmDialog(empView, "Seguro que quiere eliminar este registro?", JOptionPane.YES_NO_OPTION) == 0) {
-            int id = Integer.parseInt(empView.txtID.getText());
+        if (JOptionPane.showConfirmDialog(empView, "Seguro que quiere eliminar este registro?", "Continuar", JOptionPane.YES_NO_OPTION) == 0) {
+            int id = Integer.parseInt(empView.txtId.getText());
             empDAO.eliminar(id);
-            JOptionPane.showMessageDialog(empView, "Se ha eliminado el registro", JOptionPane.INFORMATION_MESSAGE);
-
+            vaciarTabla();
+            vaciarCampos(empView);
             traer(empView.tblEmpleado);
         }
     }
 
-    public final void vaciarCampos(EmpleadoModel emp) {
-        emp.txtNombre.setText("");
-        emp.txtApellido.setText("");
-        emp.txtNombreUsuario.setText("");
-        emp.txtContraseña.setText("");
-        emp.txtCargo.setText("");
-        emp.txtRol.setText("");
-        emp.txtNombre.requestFocus();
-        
+    public void vaciarTabla() {
+        for (int i = 0; i < empView.tblEmpleado.getRowCount(); i++) {
+            model.removeRow(i);
+            i = i - 1;
+        }
     }
 
-    public int revisarCampos(EmpleadoModel emp) {
+    public final void vaciarCampos(EmpleadoGUI empView) {
+        empView.txtId.setText("");
+        empView.txtNombre.setText("");
+        empView.txtApellido.setText("");
+        empView.txtNombreUsuario.setText("");
+        empView.txtContra.setText("");
+        empView.txtCargo.setText("");
+        empView.txtRol.setText("");
+        empView.txtNombre.requestFocus();
 
-        int validacion = 1;
+    }
+
+    public int revisarCampos(EmpleadoGUI e) {
+
+        int status = 1;
 
         if (e.txtNombre.getText().equals("")) {
-            JOptionPane.showMessageDialog(empView, "El campo de nombre no puede estar vacio.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(empView, "El campo de nombre no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
             e.txtNombre.requestFocus();
-            validacion = 0;
+            status = 0;
         } else if (e.txtApellido.getText().equals("")) {
-            JOptionPane.showMessageDialog(empView, "El campo de apellido no puede estar vacio.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(empView, "El campo de apellido no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
             e.txtApellido.requestFocus();
-            validacion = 0;
+            status = 0;
         } else if (e.txtNombreUsuario.getText().equals("")) {
-            JOptionPane.showMessageDialog(empView, "El campo de nombre de usuario no puede estar vacio.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(empView, "El campo de nombre de usuario no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
             e.txtNombreUsuario.requestFocus();
-            validacion = 0;
-        } else if (e.txtContraseña.getText().equals("")) {
-            JOptionPane.showMessageDialog(empView, "El campo de contraseña no puede estar vacio.", JOptionPane.ERROR_MESSAGE);
-            e.txtContraseña.requestFocus();
-            validacion = 0;
+            status = 0;
+        } else if (e.txtContra.getText().equals("")) {
+            JOptionPane.showMessageDialog(empView, "El campo de contraseña no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.txtContra.requestFocus();
+            status = 0;
         } else if (e.txtCargo.getText().equals("")) {
-            JOptionPane.showMessageDialog(empView, "El campo de cargo no puede estar vacio.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(empView, "El campo de cargo no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
             e.txtCargo.requestFocus();
-            validacion = 0;
+            status = 0;
         } else if (e.txtRol.getText().equals("")) {
-            JOptionPane.showMessageDialog(empView, "El campo de rol no puede estar vacio.", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(empView, "El campo de rol no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
             e.txtRol.requestFocus();
-            validacion = 0;
+            status = 0;
         }
-//        } else {
-//            validacion = 1;
-//        }
-
-        return validacion;
+        return status;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-             if (e.getSource() == empView.btnGuardar) {
-            insertarEmpleado();
-            traer(empView.tblContactos);
+        if (e.getSource() == empView.btnGuardar) {
+            if (empView.txtId.getText().equals("")) {
+                insertarEmpleado();
+                traer(empView.tblEmpleado);
+            } else {
+                editarEmpleado();
+                traer(empView.tblEmpleado);
+            }
+
         }
         if (e.getSource() == empView.btnEditar) {
-            editarEmpleado();
-            this.empView.btnEditar.setEnabled(false);
+            traerId();
         }
         if (e.getSource() == empView.btnEliminar) {
             eliminarEmpleado();
-            this.empView.btnGuardar.setEnabled(true);
-            this.empView.btnEditar.setEnabled(false);
-            this.empView.btnCancelar.setEnabled(false);
-            this.empView.btnEliminar.setEnabled(false);
             vaciarCampos(empView);
-            traer(empView.tblContactos);
+            traer(empView.tblEmpleado);
         }
-        if (e.getSource() == empView.btnCancelar) {
-            this.empView.btnGuardar.setEnabled(true);
-            this.empView.btnEditar.setEnabled(false);
-            this.empView.btnCancelar.setEnabled(false);
-            this.empView.btnEliminar.setEnabled(false);
-            this.empView.lblAviso.setVisible(false);
-            empView.txtBuscar.setText("");
-            vaciarCampos(empView);
-            traer(empView.tblContactos);
-        }
-        if (e.getSource() == empView.btnBuscar) {
-            if (!this.empView.txtBuscar.getText().equals("")) {
-                this.empView.btnGuardar.setEnabled(true);
-                this.empView.btnEditar.setEnabled(false);
-                this.empView.btnCancelar.setEnabled(true);
-                this.empView.btnEliminar.setEnabled(false);
-                vaciarCampos(empView);
-                listarContacto(empView.tblContactos);
-            } else {
-                this.empView.btnCancelar.setEnabled(true);
-                JOptionPane.showMessageDialog(empView, "El campo de busqueda esta vacio.");
-            }
-        }
-    }
+
     }
 }

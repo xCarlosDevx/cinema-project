@@ -18,6 +18,10 @@ public class EmpleadoModel {
     String cargo;
     String rol;
 
+    public EmpleadoModel() {
+
+    }
+
     public EmpleadoModel(int id, String nombre, String apellido, String nombreUsuario, String contraseña, String cargo, String rol) {
         this.id = id;
         this.nombre = nombre;
@@ -27,12 +31,6 @@ public class EmpleadoModel {
         this.cargo = cargo;
         this.rol = rol;
     }
-
-    public EmpleadoModel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-
 
     public int getId() {
         return id;

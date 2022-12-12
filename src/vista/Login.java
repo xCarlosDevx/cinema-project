@@ -39,7 +39,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        btnEmpleado = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -86,11 +86,11 @@ public class Login extends javax.swing.JFrame {
 
         jButton1.setText("Inicar sesion");
 
-        btnEmpleado.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        btnEmpleado.setText("ASIENTOS");
-        btnEmpleado.addActionListener(new java.awt.event.ActionListener() {
+        btnMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
+        btnMenu.setText("ASIENTOS");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEmpleadoActionPerformed(evt);
+                btnMenuActionPerformed(evt);
             }
         });
 
@@ -113,7 +113,7 @@ public class Login extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(btnCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(82, 82, 82)
-                .addComponent(btnEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -124,7 +124,7 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btnEmpleado)
+                                .addComponent(btnMenu)
                                 .addComponent(btnCafeteria, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -150,19 +150,14 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpleadoActionPerformed
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
-        EmpleadoGUI empView = new EmpleadoGUI();
-        empView.setVisible(true);
+       Menu menView = new Menu();
+        menView.setVisible(true);
         this.setVisible(false);
-    }//GEN-LAST:event_btnEmpleadoActionPerformed
-    
-    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnMenuActionPerformed
-        // TODO add your handling code here:
-        Menu menu = new Menu();
-        menu.setVisible(true);
-    }// GEN-LAST:event_btnMenuActionPerformed
-
+        
+    }//GEN-LAST:event_btnMenuActionPerformed
+  
     private void btnBoleteriaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnBoleteriaActionPerformed
         // TODO add your handling code here:
         PeliculasGUI boleteria = new PeliculasGUI();
@@ -229,7 +224,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBoleteria;
     private javax.swing.JButton btnCafeteria;
-    private javax.swing.JButton btnEmpleado;
+    public javax.swing.JButton btnMenu;
     private java.awt.Checkbox checkbox1;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

@@ -17,12 +17,12 @@ import vista.Menu;
  *
  * @author elmen
  */
-public class Controlador implements ActionListener {
+public class ControladorMenu implements ActionListener {
 
     Login view = new Login();
     Modelo model = new Modelo();
 
-    public Controlador(Login view) {
+    public ControladorMenu(Login view) {
         this.view = view;
 //        view.setVisible(false);
 //        EmpleadoGUI empView = new EmpleadoGUI();

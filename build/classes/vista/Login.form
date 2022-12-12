@@ -102,7 +102,7 @@
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                  <Component id="btnEmpleado" min="-2" pref="144" max="-2" attributes="0"/>
+                  <Component id="btnMenu" min="-2" pref="144" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -115,7 +115,7 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jLabel2" min="-2" pref="48" max="-2" attributes="0"/>
                               <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                  <Component id="btnEmpleado" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnMenu" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnCafeteria" min="-2" pref="43" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -178,7 +178,7 @@
             <Property name="text" type="java.lang.String" value="Inicar sesion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnEmpleado">
+        <Component class="javax.swing.JButton" name="btnMenu">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="14" style="0"/>
@@ -186,8 +186,11 @@
             <Property name="text" type="java.lang.String" value="ASIENTOS"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEmpleadoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMenuActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

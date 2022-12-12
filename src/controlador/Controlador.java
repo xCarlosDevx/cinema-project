@@ -4,17 +4,13 @@
  */
 package controlador;
 
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import modelo.Modelo;
-import modelo.QuerysBd;
-import modelo.EmpleadoModel;
-import modelo.EmpleadoDAO;
+import modelo.Modelo; 
 import vista.Login;
+import vista.EmpleadoGUI;
 
 /**
  *
@@ -23,16 +19,15 @@ import vista.Login;
 public class Controlador implements ActionListener {
 
     Login view = new Login();
-    Modelo model = new Modelo();
-    QuerysBd qr = new QuerysBd();
-    EmpleadoDAO empDao = new EmpleadoDAO();
-    EmpleadoModel emp = new EmpleadoModel();
-    
-    public Controlador(Login view, QuerysBd qr) {
-        this.view = view;
-        this.qr = qr;
-        qr.doConexion();
-//        this.view.btnMultiplicar.addActionListener(this);
+    Modelo model = new Modelo(); 
+
+    public Controlador(Login view) {
+        this.view = view; 
+        view.setVisible(false);
+        EmpleadoGUI empView = new EmpleadoGUI();
+        ControladorEmpleado empControl = new ControladorEmpleado(empView);
+        empView.setVisible(true);
+        empView.setLocationRelativeTo(null);
     }
 
     public void iniciar() {

@@ -101,9 +101,13 @@
                           </Group>
                       </Group>
                   </Group>
+<<<<<<< HEAD
+                  <EmptySpace min="-2" pref="232" max="-2" attributes="0"/>
+=======
                   <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                   <Component id="btnMenu" min="-2" pref="144" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
+>>>>>>> 34ad9dd65cfa41cdd7f7327378d1b9da12cb9f6e
               </Group>
           </Group>
         </DimensionLayout>
@@ -178,7 +182,13 @@
             <Property name="text" type="java.lang.String" value="Inicar sesion"/>
           </Properties>
         </Component>
+<<<<<<< HEAD
         <Component class="javax.swing.JButton" name="btnMenu">
+=======
+<<<<<<< HEAD
+=======
+        <Component class="javax.swing.JButton" name="btnEmpleado">
+>>>>>>> 841586c25368420f1657f2e6d0362c8df05553c9
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI Black" size="14" style="0"/>
@@ -192,6 +202,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
+>>>>>>> 34ad9dd65cfa41cdd7f7327378d1b9da12cb9f6e
       </SubComponents>
     </Container>
   </SubComponents>

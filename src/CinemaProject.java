@@ -18,10 +18,9 @@ public class CinemaProject {
      */
     public static void main(String[] args) {
 
-        Modelo mod = new Modelo();
         Login view = new Login();
         QuerysBd qr = new QuerysBd();
-        Controlador ctrl = new Controlador(view, mod, qr);
+        Controlador ctrl = new Controlador(view, qr);
         ctrl.iniciar();
         view.setVisible(true);
     }

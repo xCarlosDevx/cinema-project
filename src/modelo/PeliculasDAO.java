@@ -13,13 +13,14 @@ import java.util.List;
  * @author elmen
  */
 public class PeliculasDAO {
+
     ConexionSqlite conect = new ConexionSqlite();
     Connection cn;
     PreparedStatement ps;
     ResultSet rs;
 
     public List traerDatos() {
-        String sql = "select * from peliculas";
+        String sql = "select id,categoria,numSala,nombre,rEdad,fechaEmision,tipo,precio from peliculas";
 
         List<PeliculasModel> datos = new ArrayList<>();
         try {
@@ -30,13 +31,14 @@ public class PeliculasDAO {
 
             while (rs.next()) {
                 PeliculasModel p = new PeliculasModel();
-                p.setCategoria(rs.getString(1));
-                p.setSala(rs.getInt(2));
-                p.setNombre(rs.getString(3));
-                p.setRangoE(rs.getInt(4));
-                p.setFecha(rs.getString(5));
-                p.setTipo(rs.getString(6));
-                p.setPrecio(rs.getDouble(7));
+                p.setId(rs.getInt(1));
+                p.setCategoria(rs.getString(2));
+                p.setSala(rs.getInt(3));
+                p.setNombre(rs.getString(4));
+                p.setRangoE(rs.getInt(5));
+                p.setFecha(rs.getString(6));
+                p.setTipo(rs.getString(7));
+                p.setPrecio(rs.getDouble(8));
                 datos.add(p);
 
             }
@@ -75,7 +77,7 @@ public class PeliculasDAO {
     }
 
     public int insertarDatos(PeliculasModel p) {
-        String sql = "INSERT INTO peliculas (categoria,numSala,nombre,eEdad,fechaEmision,tipo,precio) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO peliculas (categoria,numSala,nombre,rEdad,fechaEmision,tipo,precio) VALUES (?,?,?,?,?,?,?)";
 
         try {
 

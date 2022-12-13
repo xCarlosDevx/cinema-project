@@ -104,10 +104,10 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtNombre" max="32767" attributes="0"/>
+                              <Component id="txtNombreUsuario" max="32767" attributes="0"/>
                               <Component id="jLabel7" min="-2" pref="65" max="-2" attributes="0"/>
                               <Component id="jLabel8" min="-2" pref="121" max="-2" attributes="0"/>
-                              <Component id="jPasswordField1" alignment="0" pref="173" max="32767" attributes="0"/>
+                              <Component id="txtContra" alignment="0" pref="173" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="btnIniciar" min="-2" pref="181" max="-2" attributes="0"/>
@@ -127,7 +127,7 @@
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtNombre" min="-2" pref="28" max="-2" attributes="0"/>
+                                      <Component id="txtNombreUsuario" min="-2" pref="28" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -140,7 +140,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jPasswordField1" min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="txtContra" min="-2" pref="32" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="btnIniciar" min="-2" pref="39" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
@@ -190,9 +190,9 @@
             <Property name="text" type="java.lang.String" value="Nombre"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNombre">
+        <Component class="javax.swing.JTextField" name="txtNombreUsuario">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNombreUsuarioActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -222,10 +222,13 @@
             <Property name="text" type="java.lang.String" value="jLabel3"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JPasswordField" name="jPasswordField1">
+        <Component class="javax.swing.JPasswordField" name="txtContra">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jPasswordField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtContraActionPerformed"/>
           </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

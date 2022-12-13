@@ -8,7 +8,6 @@ CREATE TABLE "empleados" (
 	"rol"	text,
 	PRIMARY KEY("id")
 );
-
 CREATE TABLE "facturaPeli" (
 	"id"	integer NOT NULL,
 	"idPelicula"	integer NOT NULL,
@@ -16,7 +15,6 @@ CREATE TABLE "facturaPeli" (
 	"precio"	real,
 	PRIMARY KEY("id")
 );
-
 CREATE TABLE "facturaSnack" (
 	"id"	integer NOT NULL,
 	"idSnack"	integer NOT NULL,
@@ -26,21 +24,18 @@ CREATE TABLE "facturaSnack" (
 	"total"	real,
 	PRIMARY KEY("id")
 );
-
 CREATE TABLE "peliculas" (
 	"id"	integer NOT NULL,
-	"idCategoria"	integer NOT NULL,
-	"idSala"	integer NOT NULL,
+	"categoria"	text,
+	"numSala"	numeric,
 	"nombre"	text,
 	"rEdad"	numeric,
 	"fechaEmision"	text,
-	"fechaFin"	text,
 	"tipo"	text,
 	"precio"	real,
 	"image"	blob,
 	PRIMARY KEY("id")
 );
-
 CREATE TABLE "snackAdicional" (
 	"id"	integer NOT NULL,
 	"nombre"	text,
@@ -49,7 +44,6 @@ CREATE TABLE "snackAdicional" (
 	"imagen"	blob,
 	PRIMARY KEY("id")
 );
-
 CREATE TABLE "snackCombo" (
 	"id"	integer NOT NULL,
 	"nombre"	text,
@@ -58,5 +52,4 @@ CREATE TABLE "snackCombo" (
 	"imagen"	BLOB,
 	PRIMARY KEY("id")
 );
-
 INSERT INTO empleados (nombre,apellido,nombreUsuario,contraseña,cargo,rol) VALUES ('Carlos A.','La Hoz Frias','xCarlosDevx','12345678','administrador','admin')

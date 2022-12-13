@@ -2,8 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-import controlador.Controlador; 
-import vista.Login; 
+import controlador.ControladorLogin;
+import vista.Login;
 
 /**
  *
@@ -16,10 +16,10 @@ public class CinemaProject {
      */
     public static void main(String[] args) {
 
-        Login view = new Login(); 
-        Controlador ctrl = new Controlador(view);
-        ctrl.iniciar();
-        view.setVisible(true);
+        Login logView = new Login();
+        ControladorLogin logControl = new ControladorLogin(logView);
+        logView.setVisible(true);
+        logView.setLocationRelativeTo(null);
     }
 
 }

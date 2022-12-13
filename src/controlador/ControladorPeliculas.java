@@ -22,7 +22,7 @@ public class ControladorPeliculas implements ActionListener {
 
     PeliculasModel peli = new PeliculasModel();
     PeliculasDAO peliDAO = new PeliculasDAO();
-    PeliculasGUI peliView = new PeliculasGUI();
+     PeliculasGUI peliView = new PeliculasGUI();
     DefaultTableModel model = new DefaultTableModel();
 
     public ControladorPeliculas(PeliculasGUI peliView) {
@@ -42,9 +42,9 @@ public class ControladorPeliculas implements ActionListener {
         Object[] object = new Object[8];
         for (int i = 0; i < lista.size(); i++) {
             object[0] = lista.get(i).getId();
-            object[1] = lista.get(i).getCategoria();
-            object[2] = lista.get(i).getSala();
-            object[3] = lista.get(i).getNombre();
+            object[1] = lista.get(i).getNombre();
+            object[2] = lista.get(i).getCategoria();
+            object[3] = lista.get(i).getSala();
             object[4] = lista.get(i).getRangoE();
             object[5] = lista.get(i).getFecha();
             object[6] = lista.get(i).getTipo();
@@ -66,7 +66,7 @@ public class ControladorPeliculas implements ActionListener {
             peliView.txtRangoE.setText(String.valueOf(lista.get(i).getRangoE()));
             peliView.txtFecha.setText(lista.get(i).getFecha());
             peliView.txtTipo.setText(lista.get(i).getTipo());
-            peliView.txtTipo.setText(String.valueOf(lista.get(i).getPrecio()));
+            peliView.txtPrecio.setText(String.valueOf(lista.get(i).getPrecio()));
 
         }
         traer(peliView.tblPeliculas);
@@ -157,10 +157,10 @@ public class ControladorPeliculas implements ActionListener {
     }
 
     public void vaciarTabla() {
-//        for (int i = 0; i < peliView.tblPeliculas.getRowCount(); i++) {
-//            model.removeRow(i);
-//            i = i - 1;
-//        }
+        for (int i = 0; i < peliView.tblPeliculas.getRowCount(); i++) {
+            model.removeRow(i);
+            i = i - 1;
+        }
     }
 
     public final void vaciarCampos(PeliculasGUI peliView) {

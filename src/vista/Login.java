@@ -38,11 +38,11 @@ public class Login extends javax.swing.JFrame {
         btnIniciar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
+        txtNombreUsuario = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtContra = new javax.swing.JPasswordField();
 
         jMenu1.setText("jMenu1");
 
@@ -79,9 +79,9 @@ public class Login extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Nombre");
 
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+        txtNombreUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
+                txtNombreUsuarioActionPerformed(evt);
             }
         });
 
@@ -94,9 +94,9 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/Img/user_50px.png"))); // NOI18N
         jLabel4.setText("jLabel3");
 
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        txtContra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                txtContraActionPerformed(evt);
             }
         });
 
@@ -116,10 +116,10 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNombre)
+                            .addComponent(txtNombreUsuario)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)))
+                            .addComponent(txtContra, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)))
                     .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
@@ -134,7 +134,7 @@ public class Login extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel7)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jLabel4))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +144,7 @@ public class Login extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel8)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
                                     .addComponent(btnIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(205, 205, 205))))
@@ -176,20 +176,20 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+    private void txtNombreUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
+    }//GEN-LAST:event_txtNombreUsuarioActionPerformed
 
     private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarActionPerformed
 //        // TODO add your handling code here:
-//        Menu menView = new Menu();
+//        MenuGUI menView = new MenuGUI();
 //        menView.setVisible(true);
 //        this.setVisible(false);
     }//GEN-LAST:event_btnIniciarActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_txtContraActionPerformed
 
     private void btnEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnEmpleadoActionPerformed
         // TODO add your handling code here:
@@ -198,7 +198,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnMenuActionPerformed
         // TODO add your handling code here:
-        Menu menu = new Menu();
+        MenuGUI menu = new MenuGUI();
         menu.setVisible(true);
     }// GEN-LAST:event_btnMenuActionPerformed
 
@@ -210,7 +210,7 @@ public class Login extends javax.swing.JFrame {
 
     private void btnCafeteriaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCafeteriaActionPerformed
         // TODO add your handling code here:
-        CafeteriaGUI cafeteria = new CafeteriaGUI();
+        SnacksGUI cafeteria = new SnacksGUI();
         cafeteria.setVisible(true);
     }// GEN-LAST:event_btnCafeteriaActionPerformed
 
@@ -276,9 +276,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    public javax.swing.JTextField txtNombre;
+    public javax.swing.JPasswordField txtContra;
+    public javax.swing.JTextField txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
 }

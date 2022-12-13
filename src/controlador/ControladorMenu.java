@@ -11,6 +11,10 @@ import javax.swing.JOptionPane;
 import modelo.Modelo;
 import vista.Login;
 import vista.EmpleadoGUI;
+import vista.PeliculasGUI;
+import vista.CafeteriaGUI;
+import vista.Comida;
+import vista.Peliculas;
 import vista.Menu;
 
 /**
@@ -19,14 +23,24 @@ import vista.Menu;
  */
 public class ControladorMenu implements ActionListener {
 
-    Login view = new Login();
-    Modelo model = new Modelo();
+    Menu view = new Menu();
+    EmpleadoGUI empView = new EmpleadoGUI();
 
-    public ControladorMenu(Login view) {
+    PeliculasGUI peliView = new PeliculasGUI();
+//    Modelo model = new Modelo();
+
+    public ControladorMenu(Menu view) {
         this.view = view;
+        this.view.btnEmpleado.addActionListener(this);
+        this.view.btnCerrar.addActionListener(this);
+        this.view.btnBoleteria.addActionListener(this);
+        this.view.btnComida.addActionListener(this);
+        this.view.btnPelicula.addActionListener(this);
+        this.view.btnSnacks.addActionListener(this);
+
 //        view.setVisible(false);
 //        EmpleadoGUI empView = new EmpleadoGUI();
-//        ControladorEmpleado empControl = new ControladorEmpleado(empView);
+//        ControladorEmpleado empCont00rol = new ControladorEmpleado(empView);
 //        empView.setVisible(true);
 //        empView.setLocationRelativeTo(null);
     }
@@ -37,11 +51,26 @@ public class ControladorMenu implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == view.btnMenu) {
-            Menu menView = new Menu();
-            menView.setVisible(true);
+        if (e.getSource() == view.btnEmpleado) {
+            ControladorEmpleado empControl = new ControladorEmpleado(empView);
+            empView.setVisible(true);
+            empView.setLocationRelativeTo(null);
+        }
+        if (e.getSource() == view.btnSnacks) {
+            CafeteriaGUI cafView = new CafeteriaGUI();
+            cafView.setVisible(true);
+        }
+        if (e.getSource() == view.btnPelicula) {
+            ControladorPeliculas peliControl = new ControladorPeliculas(peliView);
+            peliView.setLocationRelativeTo(null);
+            peliView.setVisible(true);
+        }
+        if (e.getSource() == view.btnBoleteria) {
+            Peliculas bolView = new Peliculas();
+            bolView.setVisible(true);
+        }
+        if (e.getSource() == view.btnCerrar) {
             view.setVisible(false);
-
         }
 //        model.setNumeroUno(Integer.parseInt(view.txtNumeroUno.getText()));
 //        model.setNumeroDos(Integer.parseInt(view.txtNumeroDos.getText()));

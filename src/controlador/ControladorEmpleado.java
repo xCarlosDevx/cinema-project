@@ -118,7 +118,7 @@ public class ControladorEmpleado implements ActionListener {
         emp.setRol(rol);
 
         if (revisarCampos(empView) > 0) {
-            if (JOptionPane.showConfirmDialog(empView, "Seguro que quiere eliminar este registro?", "Continuar", JOptionPane.YES_NO_OPTION) == 0) {
+            if (JOptionPane.showConfirmDialog(empView, "Seguro que quiere editar este registro", "Continuar", JOptionPane.YES_NO_OPTION) == 0) {
                 int id = Integer.parseInt(empView.txtId.getText());
                 r = empDAO.editarDatos(emp, id);
                 if (r == 1) {

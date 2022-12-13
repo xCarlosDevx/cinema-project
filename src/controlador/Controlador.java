@@ -4,13 +4,10 @@
  */
 package controlador;
 
-import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
-import modelo.Modelo;
-import vista.Login;
 import vista.EmpleadoGUI;
+import vista.Login;
 import vista.Menu;
 
 /**
@@ -18,36 +15,27 @@ import vista.Menu;
  * @author elmen
  */
 public class Controlador implements ActionListener {
-
+    
     Login view = new Login();
-    Modelo model = new Modelo();
-
+    Menu menView = new Menu();
+    
     public Controlador(Login view) {
         this.view = view;
-//        view.setVisible(false);
-//        EmpleadoGUI empView = new EmpleadoGUI();
-//        ControladorEmpleado empControl = new ControladorEmpleado(empView);
-//        empView.setVisible(true);
-//        empView.setLocationRelativeTo(null);
+        this.view.btnIniciar.addActionListener(this);
     }
-
+    
     public void iniciar() {
         view.setTitle("Cinema");
         view.setLocationRelativeTo(null);
     }
-
+    
+    @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == view.btnMenu) {
-            Menu menView = new Menu();
+        if (e.getSource() == view.btnIniciar) {
+            ControladorMenu menControl = new ControladorMenu(menView);
             menView.setVisible(true);
-            view.setVisible(false);
-
+            menView.setLocationRelativeTo(null);
+            this.view.setVisible(false);
         }
-//        model.setNumeroUno(Integer.parseInt(view.txtNumeroUno.getText()));
-//        model.setNumeroDos(Integer.parseInt(view.txtNumeroDos.getText()));
-//        model.multiplicar();
-//        view.txtResultado.setText(String.valueOf(model.getResultado()));
-
     }
-
 }

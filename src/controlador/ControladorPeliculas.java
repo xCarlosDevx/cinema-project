@@ -39,15 +39,16 @@ public class ControladorPeliculas implements ActionListener {
         vaciarTabla();
         model = (DefaultTableModel) tabla.getModel();
         List<PeliculasModel> lista = (List<PeliculasModel>) peliDAO.traerDatos();
-        Object[] object = new Object[7];
+        Object[] object = new Object[8];
         for (int i = 0; i < lista.size(); i++) {
             object[0] = lista.get(i).getId();
-            object[1] = lista.get(i).getNombre();
-            object[2] = lista.get(i).getApellido();
-            object[3] = lista.get(i).getNombreUsuario();
-            object[4] = lista.get(i).getContraseña();
-            object[5] = lista.get(i).getCargo();
-            object[6] = lista.get(i).getRol();
+            object[1] = lista.get(i).getCategoria();
+            object[2] = lista.get(i).getSala();
+            object[3] = lista.get(i).getNombre();
+            object[4] = lista.get(i).getRangoE();
+            object[5] = lista.get(i).getFecha();
+            object[6] = lista.get(i).getTipo();
+            object[7] = lista.get(i).getPrecio();
 
             model.addRow(object);
         }
@@ -59,31 +60,35 @@ public class ControladorPeliculas implements ActionListener {
         vaciarTabla();
         List<PeliculasModel> lista = (List<PeliculasModel>) peliDAO.traerDatosId(id);
         for (int i = 0; i < lista.size(); i++) {
+            peliView.txtCategoria.setText(lista.get(i).getCategoria());
+            peliView.txtSala.setText(String.valueOf(lista.get(i).getSala()));
             peliView.txtNombre.setText(lista.get(i).getNombre());
-            peliView.txtApellido.setText(lista.get(i).getApellido());
-            peliView.txtNombreUsuario.setText(lista.get(i).getNombreUsuario());
-            peliView.txtContra.setText(lista.get(i).getContraseña());
-            peliView.txtCargo.setText(lista.get(i).getCargo());
-            peliView.txtRol.setText(lista.get(i).getRol());
+            peliView.txtRangoE.setText(String.valueOf(lista.get(i).getRangoE()));
+            peliView.txtFecha.setText(lista.get(i).getFecha());
+            peliView.txtTipo.setText(lista.get(i).getTipo());
+            peliView.txtTipo.setText(String.valueOf(lista.get(i).getPrecio()));
+
         }
         traer(peliView.tblPeliculas);
     }
 
     public void insertarPeliculas() {
         int r;
+        String categoria = peliView.txtCategoria.getText();
+        int sala =Integer.parseInt(peliView.txtSala.getText());
         String nombre = peliView.txtNombre.getText();
-        String apellido = peliView.txtApellido.getText();
-        String nombreUsuario = peliView.txtNombreUsuario.getText();
-        String contraseña = peliView.txtContra.getText();
-        String cargo = peliView.txtCargo.getText();
-        String rol = peliView.txtRol.getText();
+        int rango =Integer.parseInt(peliView.txtRangoE.getText());
+        String fecha = peliView.txtFecha.getText();
+        String tipo = peliView.txtTipo.getText();
+        double precio = Integer.parseInt(peliView.txtPrecio.getText());
 
+        peli.setCategoria(categoria);
+        peli.setSala(sala);
         peli.setNombre(nombre);
-        peli.setApellido(apellido);
-        peli.setNombreUsuario(nombreUsuario);
-        peli.setContraseña(contraseña);
-        peli.setCargo(cargo);
-        peli.setRol(rol);
+        peli.setRangoE(rango);
+        peli.setFecha(fecha);
+        peli.setTipo(tipo);
+        peli.setPrecio(precio);
 
         if (revisarCampos(peliView) > 0) {
             r = peliDAO.insertarDatos(peli);
@@ -103,19 +108,22 @@ public class ControladorPeliculas implements ActionListener {
 
     public void editarPeliculas() {
         int r;
+        String categoria = peliView.txtCategoria.getText();
+        int sala =Integer.parseInt(peliView.txtSala.getText());
         String nombre = peliView.txtNombre.getText();
-        String apellido = peliView.txtApellido.getText();
-        String nombreUsuario = peliView.txtNombreUsuario.getText();
-        String contraseña = peliView.txtContra.getText();
-        String cargo = peliView.txtCargo.getText();
-        String rol = peliView.txtRol.getText();
+        int rango =Integer.parseInt(peliView.txtRangoE.getText());
+        String fecha = peliView.txtFecha.getText();
+        String tipo = peliView.txtTipo.getText();
+        double precio = Integer.parseInt(peliView.txtPrecio.getText());
 
+        peli.setCategoria(categoria);
+        peli.setSala(sala);
         peli.setNombre(nombre);
-        peli.setApellido(apellido);
-        peli.setNombreUsuario(nombreUsuario);
-        peli.setContraseña(contraseña);
-        peli.setCargo(cargo);
-        peli.setRol(rol);
+        peli.setRangoE(rango);
+        peli.setFecha(fecha);
+        peli.setTipo(tipo);
+        peli.setPrecio(precio);
+
 
         if (revisarCampos(peliView) > 0) {
             if (JOptionPane.showConfirmDialog(peliView, "Seguro que quiere eliminar este registro?", "Continuar", JOptionPane.YES_NO_OPTION) == 0) {
@@ -149,21 +157,22 @@ public class ControladorPeliculas implements ActionListener {
     }
 
     public void vaciarTabla() {
-        for (int i = 0; i < peliView.tblPeliculas.getRowCount(); i++) {
-            model.removeRow(i);
-            i = i - 1;
-        }
+//        for (int i = 0; i < peliView.tblPeliculas.getRowCount(); i++) {
+//            model.removeRow(i);
+//            i = i - 1;
+//        }
     }
 
     public final void vaciarCampos(PeliculasGUI peliView) {
         peliView.txtId.setText("");
-        peliView.txtNombre.setText("");
-        peliView.txtApellido.setText("");
-        peliView.txtNombreUsuario.setText("");
-        peliView.txtContra.setText("");
-        peliView.txtCargo.setText("");
-        peliView.txtRol.setText("");
-        peliView.txtNombre.requestFocus();
+                    peliView.txtCategoria.setText("");
+            peliView.txtSala.setText("");
+            peliView.txtNombre.setText("");
+            peliView.txtRangoE.setText("");
+            peliView.txtFecha.setText("");
+            peliView.txtTipo.setText("");
+            peliView.txtPrecio.setText("");
+        peliView.txtCategoria.requestFocus();
 
     }
 
@@ -171,29 +180,33 @@ public class ControladorPeliculas implements ActionListener {
 
         int status = 1;
 
-        if (e.txtNombre.getText().equals("")) {
+        if (e.txtCategoria.getText().equals("")) {
+            JOptionPane.showMessageDialog(peliView, "El campo de categoria no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.txtCategoria.requestFocus();
+            status = 0;
+        } else if (e.txtSala.getText().equals("")) {
+            JOptionPane.showMessageDialog(peliView, "El campo de sala no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.txtSala.requestFocus();
+            status = 0;
+        } else if (e.txtNombre.getText().equals("")) {
             JOptionPane.showMessageDialog(peliView, "El campo de nombre no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
             e.txtNombre.requestFocus();
             status = 0;
-        } else if (e.txtApellido.getText().equals("")) {
-            JOptionPane.showMessageDialog(peliView, "El campo de apellido no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
-            e.txtApellido.requestFocus();
+        }else if (e.txtRangoE.getText().equals("")) {
+            JOptionPane.showMessageDialog(peliView, "El campo de rango no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.txtRangoE.requestFocus();
             status = 0;
-        } else if (e.txtNombreUsuario.getText().equals("")) {
-            JOptionPane.showMessageDialog(peliView, "El campo de nombre de usuario no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
-            e.txtNombreUsuario.requestFocus();
+        }else if (e.txtFecha.getText().equals("")) {
+            JOptionPane.showMessageDialog(peliView, "El campo de fecha no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.txtFecha.requestFocus();
             status = 0;
-        } else if (e.txtContra.getText().equals("")) {
-            JOptionPane.showMessageDialog(peliView, "El campo de contraseña no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
-            e.txtContra.requestFocus();
+        }else if (e.txtTipo.getText().equals("")) {
+            JOptionPane.showMessageDialog(peliView, "El campo de tipo no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.txtTipo.requestFocus();
             status = 0;
-        } else if (e.txtCargo.getText().equals("")) {
-            JOptionPane.showMessageDialog(peliView, "El campo de cargo no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
-            e.txtCargo.requestFocus();
-            status = 0;
-        } else if (e.txtRol.getText().equals("")) {
-            JOptionPane.showMessageDialog(peliView, "El campo de rol no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
-            e.txtRol.requestFocus();
+        }else if (e.txtPrecio.getText().equals("")) {
+            JOptionPane.showMessageDialog(peliView, "El campo de precio no puede estar vacio.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.txtPrecio.requestFocus();
             status = 0;
         }
         return status;
